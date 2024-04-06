@@ -1,42 +1,37 @@
-.container
-{
-    display: flex;
-    flex-direction: column;
-    gap: 44px;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 44px;
 
-    padding: 36px 32px;
+  padding: 36px 32px;
 
-    position: relative;
+  position: relative;
 }
 
-.title
-{
-    font-size: 18px;
-    font-weight: 500;
-    line-height: normal;
+.title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
 
-    padding: 4px 8px;
+  padding: 4px 8px;
 }
 
-.formContainer
-{
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 40px;
+.formContainer {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 40px;
 
-    width: 1206px;
+  width: 1206px;
 }
 
-.inputContainer
-{
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 16px;
+.inputContainer {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 16px;
 }
 
-.submitButton
-{
-    display: inline-flex;
-    justify-content: flex-end;
+.submitButton {
+  display: inline-flex;
+  justify-content: flex-end;
 }

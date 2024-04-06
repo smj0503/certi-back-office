@@ -1,101 +1,89 @@
-.container
-{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
-    height: 100vh;
+  height: 100vh;
 
-    z-index: 0;
+  z-index: 0;
 }
 
-.thumbnail
-{
-    background-image: url("../public/assets/photo/photo-background.png");
-    position: relative;
+.thumbnail {
+  background-image: url('../public/assets/photo/photo-background.png');
+  position: relative;
 
-    z-index: 1;
+  z-index: 1;
 }
 
-.image
-{
-    position: absolute;
-    top: 60px;
-    left: 200px;
+.image {
+  position: absolute;
+  top: 60px;
+  left: 200px;
 }
 
-.login
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    z-index: 2;
+  z-index: 2;
 }
 
-.loginBox
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 56px;
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
 
-    min-width: 322px;
+  min-width: 322px;
 }
 
-.loginBox > div
-{
-    display: flex;
-    flex-direction: column;
+.loginBox > div {
+  display: flex;
+  flex-direction: column;
 
-    width: 100%;
+  width: 100%;
 }
 
-.description
-{
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+.description {
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 }
 
-.title
-{
-    font-size: 28px;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: -0.25px;
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.25px;
 }
 
-.subTitle
-{
-    color: rgba(28, 28, 28, 0.40);
+.subTitle {
+  color: rgba(28, 28, 28, 0.4);
 
-    font-size: 16px;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.25px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.25px;
 }
 
-.inputContainer
-{
-    gap: 16px;
+.inputContainer {
+  gap: 16px;
 }
 
-.container input
-{
-    width: 100%;
-    height: 56px;
+.container input {
+  width: 100%;
+  height: 56px;
 
-    padding: 16px 20px;
+  padding: 16px 20px;
 
-    border-radius: 12px;
-    border: 1px solid rgba(28, 28, 28, 0.50);
+  border-radius: 12px;
+  border: 1px solid rgba(28, 28, 28, 0.5);
 }
 
-.container input::placeholder
-{
-    color: rgba(28, 28, 28, 0.20);
+.container input::placeholder {
+  color: rgba(28, 28, 28, 0.2);
 
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 100%;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 100%;
 }

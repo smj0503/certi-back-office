@@ -1,94 +1,83 @@
-.toast
-{
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
+.toast {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 
-    padding: 24px 32px;
+  padding: 24px 32px;
 
-    border-radius: 16px;
-    border: 1px solid rgba(28, 28, 28, 0.10);
+  border-radius: 16px;
+  border: 1px solid rgba(28, 28, 28, 0.1);
 
-    background: #FFFFFF;
-    box-shadow: 0 6px 24px 0 rgba(28, 28, 28, 0.04);
+  background: #ffffff;
+  box-shadow: 0 6px 24px 0 rgba(28, 28, 28, 0.04);
 
-    position: absolute;
-    bottom: 36px;
-    left: 50%;
-    transform: translateX(-50%);
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
 
-    transition: opacity var(--animation-time) cubic-bezier(0.23, 0.25, 0.32, 1);
-    opacity: 0;
+  transition: opacity var(--animation-time) cubic-bezier(0.23, 0.25, 0.32, 1);
+  opacity: 0;
 }
 
-.toast[data-shown=true]
-{
-    opacity: 1;
+.toast[data-shown='true'] {
+  opacity: 1;
 }
 
-.notion
-{
-    display: flex;
-    align-items: center;
-    gap: 20px;
+.notion {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.message
-{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.message {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.state
-{
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 100%;
+.state {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 100%;
 }
 
-.confirm
-{
-    color: rgba(28, 28, 28, 0.80);
+.confirm {
+  color: rgba(28, 28, 28, 0.8);
 
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
 }
 
-.buttonGroup
-{
-    display: flex;
-    gap: 8px;
-    justify-content: flex-end;
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
 }
 
-.button
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    padding: 12px 24px;
-    border-radius: 8px;
-    background: #1C1C1C;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: #1c1c1c;
 }
 
-.button[data-color="white"]
-{
-    background-color: #FFFFFF;
+.button[data-color='white'] {
+  background-color: #ffffff;
 }
 
-.button > label
-{
-    color: #FFFFFF;
+.button > label {
+  color: #ffffff;
 
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 100%;
 }
 
-.button[data-color="white"] > label
-{
-    color: #000000;
+.button[data-color='white'] > label {
+  color: #000000;
 }

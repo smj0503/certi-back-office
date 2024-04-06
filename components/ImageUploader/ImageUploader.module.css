@@ -1,79 +1,71 @@
-.container
-{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 
-    width: 290px;
+  width: 290px;
 
-    padding: 24px;
+  padding: 24px;
 
-    border-radius: 16px;
-    background-color: rgba(33, 110, 134, 0.04);
+  border-radius: 16px;
+  background-color: rgba(33, 110, 134, 0.04);
 }
 
-.header
-{
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 
-    padding-bottom: 24px;
+  padding-bottom: 24px;
 }
 
-.label
-{
-    font-size: 14px;
-    font-weight: 400;
-    line-height: normal;
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
 
-    padding: 4px 8px;
+  padding: 4px 8px;
 }
 
-.description
-{
-    color: rgba(28, 28, 28, 0.60);
+.description {
+  color: rgba(28, 28, 28, 0.6);
 
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 18px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
 
-    padding: 4px 8px;
+  padding: 4px 8px;
 }
 
-.selector
-{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    width: 242px;
-    height: 242px;
+  width: 242px;
+  height: 242px;
 
-    border-radius: 16px;
-    background-color: #FFFFFF;
+  border-radius: 16px;
+  background-color: #ffffff;
 }
 
-.file
-{
-    display: none;
+.file {
+  display: none;
 }
 
-.uploadButton
-{
-    width: 100%;
-    height: 100%;
-    z-index: 10;
+.uploadButton {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 }
 
-.img
-{
-    width: 100%;
-    height: 100%;
+.img {
+  width: 100%;
+  height: 100%;
 
-    border-radius: 16px;
-    z-index: 1;
+  border-radius: 16px;
+  z-index: 1;
 
-    object-fit: cover;
+  object-fit: cover;
 }

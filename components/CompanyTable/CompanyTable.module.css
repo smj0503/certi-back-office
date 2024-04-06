@@ -1,44 +1,37 @@
-.table
-{
-    display: flex;
-    flex-direction: column;
+.table {
+  display: flex;
+  flex-direction: column;
 
-    width: 960px;
+  width: 960px;
 
-    padding: 8px 12px;
+  padding: 8px 12px;
 }
 
-.columns
-{
-    display: flex;
-    align-items: flex-start;
+.columns {
+  display: flex;
+  align-items: flex-start;
 
-    border-bottom: 1px solid rgba(28, 28, 28, 0.20);
+  border-bottom: 1px solid rgba(28, 28, 28, 0.2);
 }
 
-.columns label
-{
-    color: rgba(28, 28, 28, 0.40);
+.columns label {
+  color: rgba(28, 28, 28, 0.4);
 
-    font-size: 14px;
-    font-weight: 400;
-    line-height: normal;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.columns > div
-{
-    height: 37px;
+.columns > div {
+  height: 37px;
 
-    padding: 4px 16px 16px;
+  padding: 4px 16px 16px;
 }
 
-.name
-{
-    width: 456px;
+.name {
+  width: 456px;
 }
 
-.data
-{
-    width: 164px;
+.data {
+  width: 164px;
 }
-

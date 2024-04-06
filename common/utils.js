@@ -1,9 +1,7 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-export function asyncEffect(cb, deps = [])
-{
-    useEffect(() =>
-    {
-        cb();
-    }, deps);
+export function asyncEffect(cb, deps = []) {
+  useEffect(() => {
+    cb();
+  }, deps);
 }

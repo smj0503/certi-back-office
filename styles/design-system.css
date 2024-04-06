@@ -1,22 +1,22 @@
-:root
-{
-    --app-mobile-max-width: 460px;
+:root {
+  --app-mobile-max-width: 460px;
 
-    --animation-time: 500ms;
-    --animation-function: cubic-bezier(0.23, 1, 0.32, 1);
+  --animation-time: 500ms;
+  --animation-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-*[data-button-animation=true]
-{
-    transition: background-color var(--animation-time) var(--animation-function), opacity var(--animation-time) var(--animation-function), transform var(--animation-time) var(--animation-function);
+*[data-button-animation='true'] {
+  transition:
+    background-color var(--animation-time) var(--animation-function),
+    opacity var(--animation-time) var(--animation-function),
+    transform var(--animation-time) var(--animation-function);
 }
 
-*[data-button-animation=true]:hover, *[data-button-animation=true]:active
-{
-    transform: scale(0.98);
+*[data-button-animation='true']:hover,
+*[data-button-animation='true']:active {
+  transform: scale(0.98);
 }
 
-*[data-button-animation=true]:active
-{
-    transform: scale(0.96);
+*[data-button-animation='true']:active {
+  transform: scale(0.96);
 }

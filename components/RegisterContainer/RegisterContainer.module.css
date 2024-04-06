@@ -1,58 +1,52 @@
-.container
-{
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 
-    padding: 24px;
-    width: 900px;
+  padding: 24px;
+  width: 900px;
 
-    border-radius: 16px;
-    background-color: rgba(33, 110, 134, 0.04);
+  border-radius: 16px;
+  background-color: rgba(33, 110, 134, 0.04);
 }
 
-.item
-{
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 
-    width: 100%;
+  width: 100%;
 }
 
-.pair
-{
-    display: flex;
-    gap: 28px;
+.pair {
+  display: flex;
+  gap: 28px;
 }
 
-.label
-{
-    font-size: 14px;
-    font-weight: 400;
-    line-height: normal;
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
 
-    padding: 4px 8px;
+  padding: 4px 8px;
 }
 
-.input
-{
-    display: flex;
-    padding: 16px 20px;
-    align-items: center;
+.input {
+  display: flex;
+  padding: 16px 20px;
+  align-items: center;
 
-    width: 100%;
-    height: 48px;
+  width: 100%;
+  height: 48px;
 
-    border-radius: 12px;
-    background-color: #FFFFFF;
+  border-radius: 12px;
+  background-color: #ffffff;
 
-    outline: 0;
-    border: 0;
-    resize: none;
+  outline: 0;
+  border: 0;
+  resize: none;
 }
 
-.input[data-long]
-{
-    height: 140px;
+.input[data-long] {
+  height: 140px;
 }
