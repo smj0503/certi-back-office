@@ -1,11 +1,8 @@
 import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-
-import useAuthModule from '@/apis/signin.api';
-
+import { signIn } from '@/apis/signin.api';
 import ActionButton from '@/components/ActionButton';
-
 import styles from '../styles/Login.module.css';
 import Logo from '/public/assets/logo/logo-signin.svg';
 import Thumbnail from '/public/assets/photo/photo-thumbnail.png';
@@ -14,24 +11,14 @@ export default function () {
   const { t } = useTranslation('common');
   const router = useRouter();
 
-  const { signIn } = useAuthModule();
-
   const onSubmit = async (e) => {
     e.preventDefault();
 
     console.log('id : ', e.target.id.value);
-    console.log('id : ', e.target.password.value);
+    console.log('password : ', e.target.password.value);
 
     const result = await signIn(e.target.id.value, e.target.password.value);
     console.log('result : ', result);
-
-    if (result === 'success') {
-      await router.replace('/register/company');
-    }
-    // else
-    // {
-    //     alert("Please check your id and password again.");
-    // }
   };
 
   return (
