@@ -14,11 +14,11 @@ export default function () {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('id : ', e.target.id.value);
-    console.log('password : ', e.target.password.value);
-
-    const result = await signIn(e.target.id.value, e.target.password.value);
-    console.log('result : ', result);
+    const { data } = await signIn(e.target.id.value, e.target.password.value);
+    if (data) {
+      localStorage.setItem('accessToken', data.result.token);
+      await router.replace('/dashboards/company-list');
+    }
   };
 
   return (
