@@ -1,23 +1,8 @@
-import axios from 'axios';
+import { privateApi, publicApi } from '@/apis/index';
 
-const baseUrl = 'https://api.certi.live';
+export const getCompanyList = async () => await publicApi.get('/company/list');
 
-export default function useDashboardModule() {
-  const apis = {};
-  apis.getStatistics = async () => {
-    const { data } = await axios.get(`${baseUrl}/back-office/stat`);
-    return data;
-  };
+export const getCertificateList = async () =>
+  await privateApi.get('/certificate/list');
 
-  apis.getCompanyList = async () => {
-    const { data } = await axios.get(`${baseUrl}/company/list`);
-    return data;
-  };
-
-  apis.getCertificateList = async () => {
-    const { data } = await axios.get(`${baseUrl}/certificate/list`);
-    return data;
-  };
-
-  return apis;
-}
+export const getChainList = async () => await privateApi.get('/chain/list');

@@ -1,11 +1,11 @@
 import axios from 'axios';
 
 export const publicApi = axios.create({
-  baseURL: process.env.REACT_APP_BASE_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_SERVER_HOST,
 });
 
 export const privateApi = axios.create({
-  baseURL: `${process.env.REACT_APP_BASE_URL}`,
+  baseURL: `${process.env.NEXT_PUBLIC_API_SERVER_HOST}`,
   headers: {
     Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
   },
