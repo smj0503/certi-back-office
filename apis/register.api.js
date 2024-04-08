@@ -1,13 +1,19 @@
-import { privateApi } from '@/apis/index';
+import { api } from '@/apis/index';
 
-export const registerCompany = async (formData) => {
-  return await privateApi.post('/company/register', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
+export const registerCompany = async (accessToken, formData) => {
+  return await api.post('/company/register', formData, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'multipart/form-data',
+    },
   });
 };
 
-export const registerCertificate = async (formData) => {
-  return await privateApi.post('/certificate/register', formData, {
-    headers: { 'Content-Type': 'multipart/form-data' },
+export const registerCertificate = async (accessToken, formData) => {
+  return await api.post('/certificate/register', formData, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'multipart/form-data',
+    },
   });
 };

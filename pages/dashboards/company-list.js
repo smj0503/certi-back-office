@@ -15,16 +15,21 @@ export default function () {
   /* Local Fields */
   const { t } = useTranslation('common');
 
+  const [accessToken, setToken] = useState('');
   const [statistics, setStatistics] = useState();
   const [companyList, setCompanyList] = useState([]);
 
   /* LifeCycle */
   useEffect(() => {
-    (async () => {
-      const list = await getCompanyList();
-      console.log('list : ', list);
-    })();
-  }, []);
+    setToken(localStorage.getItem('accessToken'));
+    console.log('accessToken : ', accessToken);
+    if (accessToken) {
+      (async () => {
+        const list = await getCompanyList(accessToken);
+        console.log('list : ', list);
+      })();
+    }
+  }, [accessToken]);
 
   return (
     <AppLayout category={t('topBar.dashboards')} menu={t('topBar.companyList')}>

@@ -1,8 +1,25 @@
-import { privateApi, publicApi } from '@/apis/index';
+import { api } from '@/apis/index';
 
-export const getCompanyList = async () => await publicApi.get('/company/list');
+export const getCompanyList = async (accessToken) => {
+  return await api.get('/company/list', {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+};
 
-export const getCertificateList = async () =>
-  await privateApi.get('/certificate/list');
+export const getCertificateList = async (accessToken) => {
+  return await api.get('/certificate/list', {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+};
 
-export const getChainList = async () => await privateApi.get('/chain/list');
+export const getChainList = async (accessToken) => {
+  return await api.get('/chain/list', {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+};
