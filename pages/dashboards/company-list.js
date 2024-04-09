@@ -25,11 +25,15 @@ export default function () {
     console.log('accessToken : ', accessToken);
     if (accessToken) {
       (async () => {
-        const list = await getCompanyList(accessToken);
-        console.log('list : ', list);
+        const { data } = await getCompanyList(accessToken);
+        console.log('data : ', data);
+
+        setCompanyList(data.result);
       })();
     }
   }, [accessToken]);
+
+  console.log('companyList : ', companyList);
 
   return (
     <AppLayout category={t('topBar.dashboards')} menu={t('topBar.companyList')}>
