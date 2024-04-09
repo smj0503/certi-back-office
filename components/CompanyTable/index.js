@@ -1,7 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
-
 import CompanyItem from '@/components/CompanyItem';
-
 import styles from './CompanyTable.module.css';
 
 export default function ({ companyList }) {
@@ -23,8 +21,7 @@ export default function ({ companyList }) {
           <label>{t('dashboards.date')}</label>
         </div>
       </div>
-      {companyList &&
-        companyList.length > 0 &&
+      {companyList.length > 0 &&
         companyList.map((company, index) => {
           return (
             <CompanyItem
