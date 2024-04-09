@@ -22,7 +22,6 @@ export default function () {
   /* LifeCycle */
   useEffect(() => {
     setToken(localStorage.getItem('accessToken'));
-    console.log('accessToken : ', accessToken);
     if (accessToken) {
       (async () => {
         const stat = await getStatistics(accessToken);

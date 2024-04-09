@@ -35,14 +35,14 @@ export default function ({ certificateList }) {
           return (
             <CertificateItem
               key={index}
-              image={certificate.certificate_image}
-              name={certificate.certificate_name}
-              description={certificate.certificate_description}
-              companyName={certificate.company_name}
-              category={certificate.certificate_category}
-              issueNum={certificate.issued}
-              startDate={certificate.certificate_start_date.substring(10, -1)}
-              endDate={certificate.certificate_end_date.substring(10, -1)}
+              image={certificate.certificateImageLink}
+              name={certificate.certificateName}
+              description={certificate.certificateDescription}
+              companyName={certificate.companyName}
+              category={certificate.certificateImageCategory}
+              issueNum={certificate.issuedCount}
+              startDate={certificate.certificateRegisterDate}
+              endDate={certificate.certificateEndDate}
             />
           );
         })}

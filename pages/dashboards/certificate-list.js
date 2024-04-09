@@ -1,8 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
-import { useState } from 'react';
-import { asyncEffect } from '@/common/utils';
-
-import useDashboardModule from '@/apis/dashboard.api';
+import { useState, useEffect } from 'react';
+import { getStatistics, getCertificateList } from '@/apis/dashboard.api';
 
 import AppLayout from '@/components/AppLayout';
 import StatusBox from '@/components/StatusBox';
@@ -17,20 +15,26 @@ export default function () {
   /* Local Fields */
   const { t } = useTranslation('common');
 
+  const [accessToken, setToken] = useState('');
   const [statistics, setStatistics] = useState();
   const [certificateList, setCertificateList] = useState([]);
 
-  /* APIs */
-  const { getStatistics, getCertificateList } = useDashboardModule();
-
   /* LifeCycle */
-  asyncEffect(async () => {
-    const stat = await getStatistics();
-    setStatistics(stat);
+  useEffect(() => {
+    setToken(localStorage.getItem('accessToken'));
+    if (accessToken) {
+      (async () => {
+        const stat = await getStatistics(accessToken);
+        const list = await getCertificateList(accessToken);
 
-    const list = await getCertificateList();
-    setCertificateList(list);
-  });
+        setStatistics(stat.data.result);
+        setCertificateList(list.data.result);
+      })();
+    }
+  }, [accessToken]);
+
+  console.log('statistics : ', statistics);
+  console.log('certificateList : ', certificateList);
 
   return (
     <AppLayout
@@ -44,21 +48,21 @@ export default function () {
             <>
               <StatusBox
                 icon={<IconCompany />}
-                count={statistics.registered_company_cnt}
+                count={statistics.registeredCompanyCount}
                 color={'rgba(0, 158, 208, 0.10)'}
               >
                 {t('dashboards.registeredCompany')}
               </StatusBox>
               <StatusBox
                 icon={<IconCertificate />}
-                count={statistics.registered_certificate_cnt}
+                count={statistics.registeredCertificateCount}
                 color={'rgba(48, 255, 205, 0.10)'}
               >
                 {t('dashboards.registeredCertificate')}
               </StatusBox>
               <StatusBox
                 icon={<IconIssue />}
-                count={statistics.issued_certificate_cnt}
+                count={statistics.registeredIssuedCertificateCount}
                 color={'rgba(42, 208, 0, 0.10)'}
               >
                 {t('dashboards.issuedCertificate')}
