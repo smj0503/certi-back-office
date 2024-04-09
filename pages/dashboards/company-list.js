@@ -1,6 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
 import { useState, useEffect } from 'react';
-import { getCompanyList } from '@/apis/dashboard.api';
+import { getStatistics, getCompanyList } from '@/apis/dashboard.api';
 
 import AppLayout from '@/components/AppLayout';
 import StatusBox from '@/components/StatusBox';
@@ -25,14 +25,16 @@ export default function () {
     console.log('accessToken : ', accessToken);
     if (accessToken) {
       (async () => {
-        const { data } = await getCompanyList(accessToken);
-        console.log('data : ', data);
+        const stat = await getStatistics(accessToken);
+        const list = await getCompanyList(accessToken);
 
-        setCompanyList(data.result);
+        setStatistics(stat.data.result);
+        setCompanyList(list.data.result);
       })();
     }
   }, [accessToken]);
 
+  console.log('statistics : ', statistics);
   console.log('companyList : ', companyList);
 
   return (
@@ -40,31 +42,31 @@ export default function () {
       <div className={styles.container}>
         <span className={styles.title}>{t('dashboards.companyList')}</span>
         <div className={styles.statusContainer}>
-          {/*{statistics && (*/}
-          {/*  <>*/}
-          {/*    <StatusBox*/}
-          {/*      icon={<IconCompany />}*/}
-          {/*      count={statistics.registered_company_cnt}*/}
-          {/*      color={'rgba(0, 158, 208, 0.10)'}*/}
-          {/*    >*/}
-          {/*      {t('dashboards.registeredCompany')}*/}
-          {/*    </StatusBox>*/}
-          {/*    <StatusBox*/}
-          {/*      icon={<IconCertificate />}*/}
-          {/*      count={statistics.registered_certificate_cnt}*/}
-          {/*      color={'rgba(48, 255, 205, 0.10)'}*/}
-          {/*    >*/}
-          {/*      {t('dashboards.registeredCertificate')}*/}
-          {/*    </StatusBox>*/}
-          {/*    <StatusBox*/}
-          {/*      icon={<IconIssue />}*/}
-          {/*      count={statistics.issued_certificate_cnt}*/}
-          {/*      color={'rgba(42, 208, 0, 0.10)'}*/}
-          {/*    >*/}
-          {/*      {t('dashboards.issuedCertificate')}*/}
-          {/*    </StatusBox>*/}
-          {/*  </>*/}
-          {/*)}*/}
+          {statistics && (
+            <>
+              <StatusBox
+                icon={<IconCompany />}
+                count={statistics.registeredCompanyCount}
+                color={'rgba(0, 158, 208, 0.10)'}
+              >
+                {t('dashboards.registeredCompany')}
+              </StatusBox>
+              <StatusBox
+                icon={<IconCertificate />}
+                count={statistics.registeredCertificateCount}
+                color={'rgba(48, 255, 205, 0.10)'}
+              >
+                {t('dashboards.registeredCertificate')}
+              </StatusBox>
+              <StatusBox
+                icon={<IconIssue />}
+                count={statistics.registeredIssuedCertificateCount}
+                color={'rgba(42, 208, 0, 0.10)'}
+              >
+                {t('dashboards.issuedCertificate')}
+              </StatusBox>
+            </>
+          )}
         </div>
         <CompanyTable companyList={companyList} />
       </div>
