@@ -1,10 +1,9 @@
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { asyncEffect } from '@/common/utils';
+import { useState, useEffect } from 'react';
 
-import useDashboardModule from '@/apis/dashboard.api';
-import useIssueModule from '@/apis/issue.api';
+import { getChainList, getCertificateList } from '@/apis/dashboard.api';
+import { issueCertificate } from '@/apis/issue.api';
 
 import AppLayout from '@/components/AppLayout';
 import Image from '@/components/IssueContainer/Image';
@@ -19,33 +18,45 @@ export default function () {
   const { t } = useTranslation('common');
   const router = useRouter();
 
-  const [certificateList, setList] = useState([]);
+  const [accessToken, setToken] = useState('');
+  const [chainList, setChainList] = useState([]);
+  const [certificateList, setCertificateList] = useState([]);
 
-  const [certificate, setCertificate] = useState('');
-  const [receiver, setReceiver] = useState('');
+  const [certificateId, setCertificateId] = useState('');
   const [address, setAddress] = useState('');
   const [image, setImage] = useState('');
 
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  /* APIs */
-  const { getCertificateList } = useDashboardModule();
-  const { issueCertificate } = useIssueModule();
-
   /* LifeCycle */
-  asyncEffect(async () => {
-    const list = await getCertificateList();
-    setList(list);
-  }, []);
+  useEffect(() => {
+    setToken(localStorage.getItem('accessToken'));
+    if (accessToken) {
+      (async () => {
+        const chains = await getChainList(accessToken);
+        const certificates = await getCertificateList(accessToken);
+
+        setChainList(chains.data.result);
+        setCertificateList(certificates.data.result);
+      })();
+    }
+  }, [accessToken]);
 
   /* User Actions */
   const onSubmit = async (e) => {
     e.preventDefault();
-    const result = await issueCertificate(certificate, address, receiver);
-    console.log('result : ', result);
 
-    if (result === 'success') {
+    const data = {
+      chainId: chainList[0].chainId,
+      userWalletAddress: address,
+      certificateId: certificateId,
+    };
+
+    const { status } = await issueCertificate(accessToken, data);
+    console.log('status : ', status);
+
+    if (status === 200) {
       setSuccess(true);
     } else {
       setSuccess(false);
@@ -72,8 +83,7 @@ export default function () {
           <div className={styles.inputContainer}>
             <Image image={image} />
             <IssueContainer
-              setCertificate={setCertificate}
-              setReceiver={setReceiver}
+              setCertificateId={setCertificateId}
               setAddress={setAddress}
               setImage={setImage}
               certificateList={certificateList}
@@ -82,7 +92,7 @@ export default function () {
           <ActionButton
             type='submit'
             width={185}
-            disabled={!(!!certificate && !!receiver && !!address)}
+            disabled={!(!!certificateId && !!address)}
           >
             {t('issue.buttonTitle')}
           </ActionButton>

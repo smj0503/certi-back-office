@@ -2,7 +2,7 @@ import useTranslation from 'next-translate/useTranslation';
 import styles from './RegisterContainer.module.css';
 
 export default function ({
-  setCompany,
+  setCompanyId,
   setCategory,
   setStartDate,
   setEndDate,
@@ -14,7 +14,7 @@ export default function ({
   const { t } = useTranslation('common');
 
   const onChangeCompany = (e) => {
-    setCompany(e.target.value);
+    setCompanyId(e.target.value);
   };
 
   const onChangeCategory = (e) => {
@@ -52,7 +52,11 @@ export default function ({
             <option value=''>{t('register.certificate.chooseCompany')}</option>
             {companyList.length > 0 &&
               companyList.map((company, index) => {
-                return <option key={index} value={company.companyId}>{company.companyName}</option>;
+                return (
+                  <option key={index} value={company.companyId}>
+                    {company.companyName}
+                  </option>
+                );
               })}
           </select>
         </div>

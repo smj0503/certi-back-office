@@ -33,9 +33,6 @@ export default function () {
     }
   }, [accessToken]);
 
-  console.log('statistics : ', statistics);
-  console.log('certificateList : ', certificateList);
-
   return (
     <AppLayout
       category={t('topBar.dashboards')}

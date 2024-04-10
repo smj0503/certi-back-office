@@ -1,10 +1,8 @@
 import useTranslation from 'next-translate/useTranslation';
-
 import styles from './IssueContainer.module.css';
 
 export default function ({
-  setCertificate,
-  setReceiver,
+  setCertificateId,
   setAddress,
   setImage,
   certificateList,
@@ -13,14 +11,10 @@ export default function ({
 
   const onChangeCertificate = (e) => {
     const target = certificateList.find(
-      (certificate) => certificate.certificate_name === e.target.value
+      (certificate) => certificate.certificateName === e.target.value
     );
-    setCertificate(target?.id);
-    setImage(target?.certificate_image);
-  };
-
-  const onChangeReceiver = (e) => {
-    setReceiver(e.target.value);
+    setCertificateId(target?.certificateId);
+    setImage(target?.certificateImageLink);
   };
 
   const onChangeAddress = (e) => {
@@ -36,21 +30,11 @@ export default function ({
           {certificateList &&
             certificateList.length > 0 &&
             certificateList.map((certificate, index) => {
-              return (
-                <option key={index}>{certificate.certificate_name}</option>
-              );
+              return <option key={index}>{certificate.certificateName}</option>;
             })}
         </select>
       </div>
       <div className={styles.controller}>
-        <div className={styles.item}>
-          <label className={styles.label}>{t('issue.receiver')}</label>
-          <input
-            type='text'
-            className={styles.receiver}
-            onChange={onChangeReceiver}
-          />
-        </div>
         <div className={styles.item}>
           <label className={styles.label}>{t('issue.walletAddress')}</label>
           <input

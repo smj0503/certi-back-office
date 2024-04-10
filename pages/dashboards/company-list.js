@@ -33,9 +33,6 @@ export default function () {
     }
   }, [accessToken]);
 
-  console.log('statistics : ', statistics);
-  console.log('companyList : ', companyList);
-
   return (
     <AppLayout category={t('topBar.dashboards')} menu={t('topBar.companyList')}>
       <div className={styles.container}>

@@ -23,7 +23,7 @@ export default function () {
   const [companyList, setCompanyList] = useState([]);
   const [image, setImage] = useState('');
 
-  const [company, setCompany] = useState('');
+  const [companyId, setCompanyId] = useState('');
   const [category, setCategory] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -54,7 +54,7 @@ export default function () {
     const certificateRegisterRequestModel = new Blob(
       [
         JSON.stringify({
-          companyId: company,
+          companyId: companyId,
           certificateCategory: category,
           certificateName: name,
           certificateDescription: description,
@@ -69,7 +69,10 @@ export default function () {
     );
 
     formData.append('file', image);
-    formData.append('certificateRegisterRequestModel', certificateRegisterRequestModel);
+    formData.append(
+      'certificateRegisterRequestModel',
+      certificateRegisterRequestModel
+    );
 
     const { status } = await registerCertificate(accessToken, formData);
     console.log('status : ', status);
@@ -104,7 +107,7 @@ export default function () {
             </ImageUploader>
             <CertificateRegisterContainer
               setImage={setImage}
-              setCompany={setCompany}
+              setCompany={setCompanyId}
               setCategory={setCategory}
               setStartDate={setStartDate}
               setEndDate={setEndDate}
