@@ -1,20 +1,15 @@
-import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
-
 import MenuButton from '@/components/MenuButton';
-
 import styles from './AppLayout.module.css';
 
 import Logo from '../../public/assets/logo/logo-layout.svg';
-
 import IconCompany from '../../public/assets/icon-company-20.svg';
 import IconCertificate from '../../public/assets/icon-certificate-20.svg';
 import IconIssue from '../../public/assets/icon-issue-20.svg';
 import IconGrayDot from '../../public/assets/icon-gray-dot-16.svg';
 import IconLogout from '../../public/assets/icon-logout-20.svg';
-
 import IconDock from '../../public/assets/icon-dock-28.svg';
-import IconAlarm from '../../public/assets/icon-alarm-28.svg';
+// import IconAlarm from '../../public/assets/icon-alarm-28.svg';
 
 export default function ({ category, menu, children }) {
   const { t } = useTranslation('common');
@@ -89,7 +84,7 @@ export default function ({ category, menu, children }) {
             <span>{menu}</span>
           </div>
         </div>
-        <IconAlarm />
+        {/*<IconAlarm />*/}
       </div>
 
       <main className={styles.body}>{children}</main>
