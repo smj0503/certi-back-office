@@ -1,5 +1,4 @@
 import useTranslation from 'next-translate/useTranslation';
-
 import styles from './RegisterContainer.module.css';
 
 export default function ({
@@ -51,10 +50,9 @@ export default function ({
           </label>
           <select className={styles.input} onChange={onChangeCompany}>
             <option value=''>{t('register.certificate.chooseCompany')}</option>
-            {companyList &&
-              companyList.length > 0 &&
+            {companyList.length > 0 &&
               companyList.map((company, index) => {
-                return <option key={index}>{company.company_name}</option>;
+                return <option key={index} value={company.companyId}>{company.companyName}</option>;
               })}
           </select>
         </div>

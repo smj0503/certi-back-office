@@ -1,10 +1,9 @@
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { asyncEffect } from '@/common/utils';
+import { useState, useEffect } from 'react';
 
-import useDashboardModule from '@/apis/dashboard.api';
-import useRegisterModule from '@/apis/register.api';
+import { getCompanyList } from '@/apis/dashboard.api';
+import { registerCertificate } from '@/apis/register.api';
 
 import AppLayout from '@/components/AppLayout';
 import ImageUploader from '@/components/ImageUploader';
@@ -18,6 +17,8 @@ export default function () {
   /* Local Fields */
   const { t } = useTranslation('common');
   const router = useRouter();
+
+  const [accessToken, setToken] = useState('');
 
   const [companyList, setCompanyList] = useState([]);
   const [image, setImage] = useState('');
@@ -34,34 +35,46 @@ export default function () {
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  /* APIs */
-  const { getCompanyList } = useDashboardModule();
-  const { registerCertificate } = useRegisterModule();
-
   /* Life Cycle */
-  asyncEffect(async () => {
-    const companies = await getCompanyList();
-    setCompanyList(companies);
-  });
+  useEffect(() => {
+    setToken(localStorage.getItem('accessToken'));
+    if (accessToken) {
+      (async () => {
+        const list = await getCompanyList(accessToken);
+        setCompanyList(list.data.result);
+      })();
+    }
+  }, [accessToken]);
 
   /* User Actions */
   const onSubmit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append('certificate_image', image);
-    formData.append('company_name', company);
-    formData.append('certificate_category', category);
-    formData.append('certificate_start_date', startDate);
-    formData.append('certificate_end_date', endDate);
-    formData.append('certificate_name', name);
-    formData.append('certificate_website', url);
-    formData.append('certificate_description', description);
+    const certificateRegisterRequestModel = new Blob(
+      [
+        JSON.stringify({
+          companyId: company,
+          certificateCategory: category,
+          certificateName: name,
+          certificateDescription: description,
+          certificateWebsite: url,
+          certificateStartDate: startDate,
+          certificateEndDate: endDate,
+        }),
+      ],
+      {
+        type: 'application/json',
+      }
+    );
 
-    const result = await registerCertificate(formData);
-    console.log('result : ', result);
+    formData.append('file', image);
+    formData.append('certificateRegisterRequestModel', certificateRegisterRequestModel);
 
-    if (result === 'success') {
+    const { status } = await registerCertificate(accessToken, formData);
+    console.log('status : ', status);
+
+    if (status === 200) {
       setSuccess(true);
     } else {
       setSuccess(false);

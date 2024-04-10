@@ -1,5 +1,4 @@
 import useTranslation from 'next-translate/useTranslation';
-
 import styles from './RegisterContainer.module.css';
 
 export default function ({ setName, setDescription, setUrl }) {

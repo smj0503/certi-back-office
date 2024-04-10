@@ -36,6 +36,7 @@ export default function () {
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    const formData = new FormData();
     const companyRegisterRequestModel = new Blob(
       [
         JSON.stringify({
@@ -49,7 +50,6 @@ export default function () {
       }
     );
 
-    const formData = new FormData();
     formData.append('file', image);
     formData.append('companyRegisterRequestModel', companyRegisterRequestModel);
 
