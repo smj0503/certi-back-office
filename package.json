@@ -11,7 +11,9 @@
     "format:fix": "prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.6",
     "@svgr/webpack": "^8.1.0",
+    "antd": "^5.16.1",
     "axios": "^1.6.2",
     "dotenv-webpack": "^8.0.1",
     "next": "14.0.3",
