@@ -1,4 +1,4 @@
-import styles from "./Statistics.module.css";
+import styles from './Statistics.module.css';
 
 export default function ({ children, icon, count, color }) {
   return (

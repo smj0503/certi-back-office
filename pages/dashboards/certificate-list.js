@@ -33,7 +33,7 @@ export default function () {
     >
       <div className={styles.container}>
         <span className={styles.title}>{t('dashboards.certificateList')}</span>
-        <Statistics/>
+        <Statistics />
         <CertificateTable certificateList={certificateList} />
       </div>
     </AppLayout>

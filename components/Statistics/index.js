@@ -2,7 +2,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useState, useEffect } from 'react';
 import { getStatistics } from '@/apis/dashboard.api';
 
-import Item from "./Item";
+import Item from './Item';
 
 import styles from './Statistics.module.css';
 import IconCompany from '@/public/assets/icon-company-28.svg';
@@ -54,5 +54,5 @@ export default function () {
         </>
       )}
     </div>
-  )
+  );
 }

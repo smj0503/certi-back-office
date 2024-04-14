@@ -30,7 +30,7 @@ export default function () {
     <AppLayout category={t('topBar.dashboards')} menu={t('topBar.companyList')}>
       <div className={styles.container}>
         <span className={styles.title}>{t('dashboards.companyList')}</span>
-        <Statistics/>
+        <Statistics />
         <CompanyTable companyList={companyList} />
       </div>
     </AppLayout>
