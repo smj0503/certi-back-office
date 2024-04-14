@@ -3,20 +3,16 @@ import { useState, useEffect } from 'react';
 import { getStatistics, getCompanyList } from '@/apis/dashboard.api';
 
 import AppLayout from '@/components/AppLayout';
-import StatusBox from '@/components/StatusBox';
+import Statistics from '@/components/Statistics';
 import CompanyTable from '@/components/CompanyTable';
 
 import styles from '../../styles/Dashboards.module.css';
-import IconCompany from '../../public/assets/icon-company-28.svg';
-import IconCertificate from '../../public/assets/icon-certifiacte-28.svg';
-import IconIssue from '../../public/assets/icon-issue-28.svg';
 
 export default function () {
   /* Local Fields */
   const { t } = useTranslation('common');
 
   const [accessToken, setToken] = useState('');
-  const [statistics, setStatistics] = useState();
   const [companyList, setCompanyList] = useState([]);
 
   /* LifeCycle */
@@ -24,10 +20,7 @@ export default function () {
     setToken(localStorage.getItem('accessToken'));
     if (accessToken) {
       (async () => {
-        const stat = await getStatistics(accessToken);
         const list = await getCompanyList(accessToken);
-
-        setStatistics(stat.data.result);
         setCompanyList(list.data.result);
       })();
     }
@@ -37,33 +30,7 @@ export default function () {
     <AppLayout category={t('topBar.dashboards')} menu={t('topBar.companyList')}>
       <div className={styles.container}>
         <span className={styles.title}>{t('dashboards.companyList')}</span>
-        <div className={styles.statusContainer}>
-          {statistics && (
-            <>
-              <StatusBox
-                icon={<IconCompany />}
-                count={statistics.registeredCompanyCount}
-                color={'rgba(0, 158, 208, 0.10)'}
-              >
-                {t('dashboards.registeredCompany')}
-              </StatusBox>
-              <StatusBox
-                icon={<IconCertificate />}
-                count={statistics.registeredCertificateCount}
-                color={'rgba(48, 255, 205, 0.10)'}
-              >
-                {t('dashboards.registeredCertificate')}
-              </StatusBox>
-              <StatusBox
-                icon={<IconIssue />}
-                count={statistics.registeredIssuedCertificateCount}
-                color={'rgba(42, 208, 0, 0.10)'}
-              >
-                {t('dashboards.issuedCertificate')}
-              </StatusBox>
-            </>
-          )}
-        </div>
+        <Statistics/>
         <CompanyTable companyList={companyList} />
       </div>
     </AppLayout>

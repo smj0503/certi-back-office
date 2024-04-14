@@ -1,8 +1,8 @@
-import styles from './StatusBox.module.css';
+import styles from "./Statistics.module.css";
 
 export default function ({ children, icon, count, color }) {
   return (
-    <div className={styles.container} style={{ backgroundColor: color }}>
+    <div className={styles.item} style={{ backgroundColor: color }}>
       <div>
         <label className={styles.label}>{children}</label>
         {icon}
