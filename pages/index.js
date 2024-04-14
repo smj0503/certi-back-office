@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { signIn } from '@/apis/signin.api';
 import ActionButton from '@/components/ActionButton';
 import styles from '../styles/Login.module.css';
@@ -10,6 +11,16 @@ import Thumbnail from '/public/assets/photo/photo-thumbnail.png';
 export default function () {
   const { t } = useTranslation('common');
   const router = useRouter();
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      (async () => {
+        console.log('session 있음');
+        await router.replace('/dashboards/company-list');
+      })();
+    }
+  }, []);
 
   const onSubmit = async (e) => {
     e.preventDefault();
