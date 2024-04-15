@@ -1,12 +1,12 @@
 import useTranslation from 'next-translate/useTranslation';
 import { useState, useEffect } from 'react';
-import { getStatistics, getCompanyList } from '@/apis/dashboard.api';
+import { getCompanyList } from '@/apis/dashboard.api';
 
 import AppLayout from '@/components/AppLayout';
 import Statistics from '@/components/Statistics';
 import CompanyTable from '@/components/CompanyTable';
 
-import styles from '../../styles/Dashboards.module.css';
+import styles from '@/styles/Dashboards.module.css';
 
 export default function () {
   /* Local Fields */
