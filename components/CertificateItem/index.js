@@ -1,5 +1,5 @@
+import { Flex } from 'antd';
 import RemoteImage from '@/components/RemoteImage';
-
 import styles from './CertificateItem.module.css';
 
 export default function ({
@@ -13,29 +13,29 @@ export default function ({
   endDate,
 }) {
   return (
-    <div className={styles.item}>
-      <div className={styles.info}>
+    <Flex align='center' className={styles.item}>
+      <Flex align='center' gap={12}>
         <RemoteImage src={image} shape='certificate' />
-        <div className={styles.text}>
+        <Flex vertical gap={6} className={styles.text}>
           <span className={styles.name}>{name}</span>
           <span className={styles.description}>{description}</span>
-        </div>
-      </div>
-      <div className={styles.longData}>
+        </Flex>
+      </Flex>
+      <Flex align='center' className={styles.longData}>
         <span>{companyName}</span>
-      </div>
-      <div className={styles.longData}>
+      </Flex>
+      <Flex align='center' className={styles.longData}>
         <span>{category}</span>
-      </div>
-      <div className={styles.shortData}>
+      </Flex>
+      <Flex align='center' className={styles.shortData}>
         <span>{issueNum}</span>
-      </div>
-      <div className={styles.date}>
+      </Flex>
+      <Flex align='center' className={styles.date}>
         <span>{startDate}</span>
-      </div>
-      <div className={styles.date}>
+      </Flex>
+      <Flex align='center' className={styles.date}>
         <span>{endDate}</span>
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   );
 }

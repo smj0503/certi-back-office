@@ -1,15 +1,14 @@
 import useTranslation from 'next-translate/useTranslation';
-
+import { Flex } from 'antd';
 import CertificateItem from '@/components/CertificateItem';
-
 import styles from './CertificateTable.module.css';
 
 export default function ({ certificateList }) {
   const { t } = useTranslation('common');
 
   return (
-    <div className={styles.table}>
-      <div className={styles.columns}>
+    <Flex vertical className={styles.table}>
+      <Flex align='flex-start' className={styles.columns}>
         <div className={styles.name}>
           <label>{t('dashboards.certificate')}</label>
         </div>
@@ -28,7 +27,7 @@ export default function ({ certificateList }) {
         <div className={styles.date}>
           <label>{t('dashboards.endDate')}</label>
         </div>
-      </div>
+      </Flex>
       {certificateList &&
         certificateList.length > 0 &&
         certificateList.map((certificate, index) => {
@@ -46,6 +45,6 @@ export default function ({ certificateList }) {
             />
           );
         })}
-    </div>
+    </Flex>
   );
 }
