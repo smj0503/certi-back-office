@@ -1,16 +1,9 @@
 .table {
-  display: flex;
-  flex-direction: column;
-
   width: 960px;
-
   padding: 8px 12px;
 }
 
 .columns {
-  display: flex;
-  align-items: flex-start;
-
   border-bottom: 1px solid rgba(28, 28, 28, 0.2);
 }
 

@@ -1,12 +1,6 @@
 .container {
   background: rgba(28, 28, 28, 0.1);
-
   overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   flex-shrink: 0;
 }
 

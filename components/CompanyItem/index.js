@@ -1,5 +1,5 @@
 import RemoteImage from '@/components/RemoteImage';
-
+import { Flex } from 'antd';
 import styles from './CompanyItem.module.css';
 
 export default function ({
@@ -11,7 +11,7 @@ export default function ({
   date,
 }) {
   return (
-    <div className={styles.item}>
+    <Flex align='center' className={styles.item}>
       <div className={styles.info}>
         <RemoteImage src={image} shape='company' />
         <div className={styles.text}>
@@ -28,6 +28,6 @@ export default function ({
       <div className={styles.data}>
         <span>{date}</span>
       </div>
-    </div>
+    </Flex>
   );
 }

@@ -1,4 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
+import { Flex } from 'antd';
 import CompanyItem from '@/components/CompanyItem';
 import styles from './CompanyTable.module.css';
 
@@ -6,8 +7,8 @@ export default function ({ companyList }) {
   const { t } = useTranslation('common');
 
   return (
-    <div className={styles.table}>
-      <div className={styles.columns}>
+    <Flex vertical className={styles.table}>
+      <Flex align='flex-start' className={styles.columns}>
         <div className={styles.name}>
           <label>{t('dashboards.company')}</label>
         </div>
@@ -20,7 +21,7 @@ export default function ({ companyList }) {
         <div className={styles.data}>
           <label>{t('dashboards.date')}</label>
         </div>
-      </div>
+      </Flex>
       {companyList.length > 0 &&
         companyList.map((company, index) => {
           return (
@@ -35,6 +36,6 @@ export default function ({ companyList }) {
             />
           );
         })}
-    </div>
+    </Flex>
   );
 }
