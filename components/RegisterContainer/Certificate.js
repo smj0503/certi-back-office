@@ -1,4 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
+import { Flex, Select } from 'antd';
 import styles from './RegisterContainer.module.css';
 
 export default function ({
