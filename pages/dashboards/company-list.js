@@ -9,22 +9,15 @@ import CompanyTable from '@/components/CompanyTable';
 import styles from '@/styles/Dashboards.module.css';
 
 export default function () {
-  /* Local Fields */
   const { t } = useTranslation('common');
-
-  const [accessToken, setToken] = useState('');
   const [companyList, setCompanyList] = useState([]);
 
-  /* LifeCycle */
   useEffect(() => {
-    setToken(localStorage.getItem('accessToken'));
-    if (accessToken) {
-      (async () => {
-        const list = await getCompanyList(accessToken);
-        setCompanyList(list.data.result);
-      })();
-    }
-  }, [accessToken]);
+    (async () => {
+      const list = await getCompanyList();
+      setCompanyList(list.data.result);
+    })();
+  }, []);
 
   return (
     <AppLayout category={t('topBar.dashboards')} menu={t('topBar.companyList')}>

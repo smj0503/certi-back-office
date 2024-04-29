@@ -18,8 +18,6 @@ export default function () {
   const { t } = useTranslation('common');
   const router = useRouter();
 
-  const [accessToken, setToken] = useState('');
-
   const [companyList, setCompanyList] = useState([]);
   const [image, setImage] = useState('');
 
@@ -37,14 +35,11 @@ export default function () {
 
   /* Life Cycle */
   useEffect(() => {
-    setToken(localStorage.getItem('accessToken'));
-    if (accessToken) {
-      (async () => {
-        const list = await getCompanyList(accessToken);
-        setCompanyList(list.data.result);
-      })();
-    }
-  }, [accessToken]);
+    (async () => {
+      const list = await getCompanyList();
+      setCompanyList(list.data.result);
+    })();
+  }, []);
 
   /* User Actions */
   const onSubmit = async (e) => {
@@ -74,7 +69,7 @@ export default function () {
       certificateRegisterRequestModel
     );
 
-    const { status } = await registerCertificate(accessToken, formData);
+    const { status } = await registerCertificate(formData);
     console.log('status : ', status);
 
     if (status === 200) {
@@ -126,7 +121,7 @@ export default function () {
                 !!name &&
                 !!description &&
                 !!url &&
-                !!company &&
+                !!companyId &&
                 !!category &&
                 !!startDate &&
                 !!endDate

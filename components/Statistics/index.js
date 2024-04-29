@@ -12,19 +12,15 @@ import IconIssue from '@/public/assets/icon-issue-28.svg';
 export default function () {
   /* Local Fields */
   const { t } = useTranslation('common');
-  const [accessToken, setToken] = useState('');
   const [statistics, setStatistics] = useState();
 
   /* LifeCycle */
   useEffect(() => {
-    setToken(localStorage.getItem('accessToken'));
-    if (accessToken) {
-      (async () => {
-        const stat = await getStatistics(accessToken);
-        setStatistics(stat.data.result);
-      })();
-    }
-  }, [accessToken]);
+    (async () => {
+      const stat = await getStatistics();
+      setStatistics(stat.data.result);
+    })();
+  }, []);
 
   return (
     <div className={styles.statusContainer}>

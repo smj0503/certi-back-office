@@ -18,7 +18,6 @@ export default function () {
   const { t } = useTranslation('common');
   const router = useRouter();
 
-  const [accessToken, setToken] = useState('');
   const [chainList, setChainList] = useState([]);
   const [certificateList, setCertificateList] = useState([]);
 
@@ -31,17 +30,14 @@ export default function () {
 
   /* LifeCycle */
   useEffect(() => {
-    setToken(localStorage.getItem('accessToken'));
-    if (accessToken) {
-      (async () => {
-        const chains = await getChainList(accessToken);
-        const certificates = await getCertificateList(accessToken);
+    (async () => {
+      const chains = await getChainList();
+      const certificates = await getCertificateList();
 
-        setChainList(chains.data.result);
-        setCertificateList(certificates.data.result);
-      })();
-    }
-  }, [accessToken]);
+      setChainList(chains.data.result);
+      setCertificateList(certificates.data.result);
+    })();
+  }, []);
 
   /* User Actions */
   const onSubmit = async (e) => {
@@ -53,7 +49,7 @@ export default function () {
       certificateId: certificateId,
     };
 
-    const { status } = await issueCertificate(accessToken, data);
+    const { status } = await issueCertificate(data);
     console.log('status : ', status);
 
     if (status === 200) {

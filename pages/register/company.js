@@ -1,6 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { registerCompany } from '@/apis/register.api';
 
@@ -17,8 +17,6 @@ export default function () {
   const { t } = useTranslation('common');
   const router = useRouter();
 
-  const [accessToken, setToken] = useState('');
-
   const [image, setImage] = useState('');
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -26,11 +24,6 @@ export default function () {
 
   const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
-
-  /* LifeCycle */
-  useEffect(() => {
-    setToken(localStorage.getItem('accessToken'));
-  }, []);
 
   /* User Actions */
   const onSubmit = async (e) => {
@@ -53,7 +46,7 @@ export default function () {
     formData.append('file', image);
     formData.append('companyRegisterRequestModel', companyRegisterRequestModel);
 
-    const { status } = await registerCompany(accessToken, formData);
+    const { status } = await registerCompany(formData);
     console.log('status : ', status);
 
     if (status === 200) {

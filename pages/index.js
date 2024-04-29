@@ -2,6 +2,7 @@ import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import LocalStorage from "@/common/localstorage.manager";
 import { signIn } from '@/apis/signin.api';
 import ActionButton from '@/components/ActionButton';
 import styles from '../styles/Login.module.css';
@@ -11,9 +12,9 @@ import Thumbnail from '/public/assets/photo/photo-thumbnail.png';
 export default function () {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const accessToken = LocalStorage.shared.getItem('accessToken');
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('accessToken');
     if (accessToken) {
       (async () => {
         console.log('session 있음');
@@ -27,7 +28,7 @@ export default function () {
 
     const { data } = await signIn(e.target.id.value, e.target.password.value);
     if (data) {
-      localStorage.setItem('accessToken', data.result.token);
+      LocalStorage.shared.setItem('accessToken', data.result.token);
       await router.replace('/dashboards/company-list');
     }
   };

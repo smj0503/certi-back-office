@@ -11,20 +11,15 @@ import styles from '../../styles/Dashboards.module.css';
 export default function () {
   /* Local Fields */
   const { t } = useTranslation('common');
-
-  const [accessToken, setToken] = useState('');
   const [certificateList, setCertificateList] = useState([]);
 
   /* LifeCycle */
   useEffect(() => {
-    setToken(localStorage.getItem('accessToken'));
-    if (accessToken) {
-      (async () => {
-        const list = await getCertificateList(accessToken);
-        setCertificateList(list.data.result);
-      })();
-    }
-  }, [accessToken]);
+    (async () => {
+      const list = await getCertificateList();
+      setCertificateList(list.data.result);
+    })();
+  }, []);
 
   return (
     <AppLayout

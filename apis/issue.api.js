@@ -1,6 +1,9 @@
 import { api } from '@/apis/index';
+import LocalStorage from "@/common/localstorage.manager";
 
-export const issueCertificate = async (accessToken, data) => {
+const accessToken = LocalStorage.shared.getItem('accessToken');
+
+export const issueCertificate = async (data) => {
   return await api.post('/certificate/issue', data, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
