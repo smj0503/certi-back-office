@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import LocalStorage from '@/common/localstorage.manager';
 import { signIn } from '@/apis/signin.api';
+
+import { Flex } from 'antd';
 import ActionButton from '@/components/ActionButton';
 import styles from '../styles/Login.module.css';
 import Logo from '/public/assets/logo/logo-signin.svg';
@@ -45,31 +47,39 @@ export default function () {
           priority={true}
         />
       </div>
-      <div className={styles.login}>
+      <Flex align='center' justify='center' className={styles.login}>
         <form className={styles.loginBox} onSubmit={onSubmit}>
-          <Logo />
-          <div className={styles.description}>
-            <span className={styles.title}>
-              {t('signIn.loginToYourAccount')}
-            </span>
-            <span className={styles.subTitle}>
-              {t('signIn.pleaseEnterYourDetails')}
-            </span>
-          </div>
-          <div className={styles.inputContainer}>
-            <input type='text' name='id' placeholder='ID' required={true} />
-            <input
-              type='password'
-              name='password'
-              placeholder='Password'
-              required={true}
-            />
-          </div>
-          <ActionButton type='submit' width='100%'>
-            {t('signIn.login')}
-          </ActionButton>
+          <Flex vertical align='center' gap={56}>
+            <Logo />
+            <Flex
+              vertical
+              align='center'
+              justify='center'
+              gap={12}
+              style={{ width: '100%' }}
+            >
+              <span className={styles.title}>
+                {t('signIn.loginToYourAccount')}
+              </span>
+              <span className={styles.subTitle}>
+                {t('signIn.pleaseEnterYourDetails')}
+              </span>
+            </Flex>
+            <Flex vertical gap={16} style={{ width: '100%' }}>
+              <input type='text' name='id' placeholder='ID' required={true} />
+              <input
+                type='password'
+                name='password'
+                placeholder='Password'
+                required={true}
+              />
+            </Flex>
+            <ActionButton type='submit' width='100%'>
+              {t('signIn.login')}
+            </ActionButton>
+          </Flex>
         </form>
-      </div>
+      </Flex>
     </div>
   );
 }

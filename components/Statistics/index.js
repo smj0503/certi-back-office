@@ -10,11 +10,9 @@ import IconCertificate from '@/public/assets/icon-certifiacte-28.svg';
 import IconIssue from '@/public/assets/icon-issue-28.svg';
 
 export default function () {
-  /* Local Fields */
   const { t } = useTranslation('common');
   const [statistics, setStatistics] = useState();
 
-  /* LifeCycle */
   useEffect(() => {
     (async () => {
       const stat = await getStatistics();
