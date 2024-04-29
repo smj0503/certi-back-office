@@ -102,7 +102,7 @@ export default function () {
             </ImageUploader>
             <CertificateRegisterContainer
               setImage={setImage}
-              setCompany={setCompanyId}
+              setCompanyId={setCompanyId}
               setCategory={setCategory}
               setStartDate={setStartDate}
               setEndDate={setEndDate}

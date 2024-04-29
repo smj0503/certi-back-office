@@ -14,12 +14,12 @@ export default function ({
 }) {
   const { t } = useTranslation('common');
 
-  const onChangeCompany = (e) => {
-    setCompanyId(e.target.value);
+  const onChangeCompany = (value) => {
+    setCompanyId(value);
   };
 
-  const onChangeCategory = (e) => {
-    setCategory(e.target.value);
+  const onChangeCategory = (value) => {
+    setCategory(value);
   };
 
   const onChangeStartDate = (e) => {
@@ -43,40 +43,58 @@ export default function ({
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.pair}>
-        <div className={styles.item}>
+    <Flex vertical gap={28} className={styles.container}>
+      <Flex gap={28}>
+        <Flex vertical gap={12} style={{ width: '100%' }}>
           <label className={styles.label}>
             {t('register.certificate.companyName')}
           </label>
-          <select className={styles.input} onChange={onChangeCompany}>
-            <option value=''>{t('register.certificate.chooseCompany')}</option>
-            {companyList.length > 0 &&
-              companyList.map((company, index) => {
-                return (
-                  <option key={index} value={company.companyId}>
-                    {company.companyName}
-                  </option>
-                );
-              })}
-          </select>
-        </div>
-        <div className={styles.item}>
+          <Select
+            className={styles.input}
+            placeholder={t('register.certificate.chooseCompany')}
+            onChange={onChangeCompany}
+            options={
+              companyList.map((company) => {
+                return ({
+                  value: company.companyId,
+                  label: company.companyName,
+                })
+              })
+            }
+          />
+        </Flex>
+        <Flex vertical gap={12} style={{ width: '100%' }}>
           <label className={styles.label}>
             {t('register.certificate.certificateCategory')}
           </label>
-          <select className={styles.input} onChange={onChangeCategory}>
-            <option value=''>{t('register.certificate.chooseCategory')}</option>
-            <option>{'Diploma'}</option>
-            <option>{'Contest'}</option>
-            <option>{'License'}</option>
-            <option>{'Others'}</option>
-          </select>
-        </div>
-      </div>
+          <Select
+              className={styles.input}
+              placeholder={t('register.certificate.chooseCategory')}
+              onChange={onChangeCategory}
+              options={[
+                {
+                  value: 'Diploma',
+                  label: 'Diploma',
+                },
+                {
+                  value: 'Contest',
+                  label: 'Contest',
+                },
+                {
+                  value: 'License',
+                  label: 'License',
+                },
+                {
+                  value: 'Others',
+                  label: 'Others',
+                },
+              ]}
+          />
+        </Flex>
+      </Flex>
 
-      <div className={styles.pair}>
-        <div className={styles.item}>
+      <Flex gap={28}>
+        <Flex vertical gap={12} style={{ width: '100%' }}>
           <label className={styles.label}>
             {t('register.certificate.startDate')}
           </label>
@@ -85,8 +103,8 @@ export default function ({
             className={styles.input}
             onChange={onChangeStartDate}
           />
-        </div>
-        <div className={styles.item}>
+        </Flex>
+        <Flex vertical gap={12} style={{ width: '100%' }}>
           <label className={styles.label}>
             {t('register.certificate.endDate')}
           </label>
@@ -95,20 +113,20 @@ export default function ({
             className={styles.input}
             onChange={onChangeEndDate}
           />
-        </div>
-      </div>
+        </Flex>
+      </Flex>
 
-      <div className={styles.item}>
+      <Flex vertical gap={12} style={{ width: '100%' }}>
         <label className={styles.label}>{t('register.certificate.name')}</label>
         <textarea className={styles.input} onChange={onChangeName} />
-      </div>
-      <div className={styles.item}>
+      </Flex>
+      <Flex vertical gap={12} style={{ width: '100%' }}>
         <label className={styles.label}>
           {t('register.certificate.website')}
         </label>
         <textarea className={styles.input} onChange={onChangeUrl} />
-      </div>
-      <div className={styles.item} data-long={true}>
+      </Flex>
+      <Flex vertical gap={12} style={{ width: '100%' }} data-long={true}>
         <label className={styles.label}>
           {t('register.certificate.description')}
         </label>
@@ -117,7 +135,7 @@ export default function ({
           onChange={onChangeDescription}
           data-long={true}
         />
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   );
 }

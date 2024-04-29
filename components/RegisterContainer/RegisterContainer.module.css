@@ -1,26 +1,9 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-
   padding: 24px;
   width: 900px;
 
   border-radius: 16px;
   background-color: rgba(33, 110, 134, 0.04);
-}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-
-  width: 100%;
-}
-
-.pair {
-  display: flex;
-  gap: 28px;
 }
 
 .label {
@@ -45,6 +28,16 @@
   outline: 0;
   border: 0;
   resize: none;
+}
+
+.input > div {
+  border: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+.input > div > span {
+  color: black !important;
 }
 
 .input[data-long] {
