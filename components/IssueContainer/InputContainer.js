@@ -1,4 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
+import { Flex, Select } from "antd";
 import styles from './IssueContainer.module.css';
 
 export default function ({
@@ -9,11 +10,11 @@ export default function ({
 }) {
   const { t } = useTranslation('common');
 
-  const onChangeCertificate = (e) => {
+  const onChangeCertificate = (value) => {
     const target = certificateList.find(
-      (certificate) => certificate.certificateName === e.target.value
+      (certificate) => certificate.certificateId === value
     );
-    setCertificateId(target?.certificateId);
+    setCertificateId(value);
     setImage(target?.certificateImageLink);
   };
 
@@ -22,28 +23,30 @@ export default function ({
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.item}>
+    <Flex vertical gap={28} className={styles.container}>
+      <Flex vertical gap={12} className={styles.item}>
         <label className={styles.label}>{t('issue.certificate')}</label>
-        <select className={styles.select} onChange={onChangeCertificate}>
-          <option value=''>{t('issue.chooseCertificate')}</option>
-          {certificateList &&
-            certificateList.length > 0 &&
-            certificateList.map((certificate, index) => {
-              return <option key={index}>{certificate.certificateName}</option>;
+        <Select
+            className={styles.select}
+            placeholder={t('issue.chooseCertificate')}
+            onChange={onChangeCertificate}
+            options={certificateList.map((certificate) => {
+              return {
+                value: certificate.certificateId,
+                label: certificate.certificateName,
+              };
             })}
-        </select>
-      </div>
-      <div className={styles.controller}>
-        <div className={styles.item}>
-          <label className={styles.label}>{t('issue.walletAddress')}</label>
-          <input
-            type='text'
-            className={styles.address}
-            onChange={onChangeAddress}
-          />
-        </div>
-      </div>
-    </div>
+        />
+      </Flex>
+      <Flex vertical gap={12}>
+        <label className={styles.label}>{t('issue.walletAddress')}</label>
+        <input
+          placeholder={t('issue.walletAddressPlaceholder')}
+          type='text'
+          className={styles.address}
+          onChange={onChangeAddress}
+        />
+      </Flex>
+    </Flex>
   );
 }

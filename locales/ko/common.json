@@ -78,6 +78,7 @@
     "chooseCertificate": "증명서 선택",
     "receiver": "받는 사람",
     "walletAddress": "지갑 주소",
+    "walletAddressPlaceholder": "지갑 주소를 입력하세요",
     "buttonTitle": "발행"
   },
   "toast": {

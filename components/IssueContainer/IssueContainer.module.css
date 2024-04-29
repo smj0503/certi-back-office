@@ -1,19 +1,9 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 28px;
-
   padding: 24px;
   width: 900px;
 
   border-radius: 16px;
   background-color: rgba(33, 110, 134, 0.04);
-}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
 }
 
 .label {
@@ -25,7 +15,6 @@
 }
 
 .select,
-.receiver,
 .address {
   display: flex;
   padding: 16px 20px;
@@ -42,14 +31,20 @@
   resize: none;
 }
 
+.select > div {
+  border: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
 .address {
   width: 852px;
 }
 
-.controller {
-  display: flex;
-  align-items: flex-end;
-  gap: 28px;
+.address::placeholder {
+  color: #c3c3c3;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .imageContainer {
