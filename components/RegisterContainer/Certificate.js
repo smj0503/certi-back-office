@@ -53,14 +53,12 @@ export default function ({
             className={styles.input}
             placeholder={t('register.certificate.chooseCompany')}
             onChange={onChangeCompany}
-            options={
-              companyList.map((company) => {
-                return ({
-                  value: company.companyId,
-                  label: company.companyName,
-                })
-              })
-            }
+            options={companyList.map((company) => {
+              return {
+                value: company.companyId,
+                label: company.companyName,
+              };
+            })}
           />
         </Flex>
         <Flex vertical gap={12} style={{ width: '100%' }}>
@@ -68,27 +66,27 @@ export default function ({
             {t('register.certificate.certificateCategory')}
           </label>
           <Select
-              className={styles.input}
-              placeholder={t('register.certificate.chooseCategory')}
-              onChange={onChangeCategory}
-              options={[
-                {
-                  value: 'Diploma',
-                  label: 'Diploma',
-                },
-                {
-                  value: 'Contest',
-                  label: 'Contest',
-                },
-                {
-                  value: 'License',
-                  label: 'License',
-                },
-                {
-                  value: 'Others',
-                  label: 'Others',
-                },
-              ]}
+            className={styles.input}
+            placeholder={t('register.certificate.chooseCategory')}
+            onChange={onChangeCategory}
+            options={[
+              {
+                value: 'Diploma',
+                label: 'Diploma',
+              },
+              {
+                value: 'Contest',
+                label: 'Contest',
+              },
+              {
+                value: 'License',
+                label: 'License',
+              },
+              {
+                value: 'Others',
+                label: 'Others',
+              },
+            ]}
           />
         </Flex>
       </Flex>
@@ -98,31 +96,40 @@ export default function ({
           <label className={styles.label}>
             {t('register.certificate.startDate')}
           </label>
-          <DatePicker placeholder='' className={styles.input} onChange={onChangeStartDate} />
+          <DatePicker
+            placeholder={t('register.certificate.startDatePlaceholder')}
+            className={styles.input}
+            onChange={onChangeStartDate}
+          />
         </Flex>
         <Flex vertical gap={12} style={{ width: '100%' }}>
           <label className={styles.label}>
             {t('register.certificate.endDate')}
           </label>
-          <DatePicker placeholder='' className={styles.input} onChange={onChangeEndDate} />
+          <DatePicker
+            placeholder={t('register.certificate.endDatePlaceholder')}
+            className={styles.input}
+            onChange={onChangeEndDate}
+          />
         </Flex>
       </Flex>
 
       <Flex vertical gap={12} style={{ width: '100%' }}>
         <label className={styles.label}>{t('register.certificate.name')}</label>
-        <textarea className={styles.input} onChange={onChangeName} />
+        <textarea placeholder={t('register.certificate.namePlaceholder')} className={styles.input} onChange={onChangeName} />
       </Flex>
       <Flex vertical gap={12} style={{ width: '100%' }}>
         <label className={styles.label}>
           {t('register.certificate.website')}
         </label>
-        <textarea className={styles.input} onChange={onChangeUrl} />
+        <textarea placeholder={t('register.certificate.websitePlaceholder')} className={styles.input} onChange={onChangeUrl} />
       </Flex>
       <Flex vertical gap={12} style={{ width: '100%' }} data-long={true}>
         <label className={styles.label}>
           {t('register.certificate.description')}
         </label>
         <textarea
+            placeholder={t('register.certificate.descriptionPlaceholder')}
           className={styles.input}
           onChange={onChangeDescription}
           data-long={true}

@@ -30,14 +30,16 @@
   resize: none;
 }
 
+.input::placeholder {
+  color: #C3C3C3;
+  font-weight: 400;
+  font-size: 14px;
+}
+
 .input > div {
   border: 0 !important;
   padding: 0 !important;
   box-shadow: none !important;
-}
-
-.input > div > span {
-  color: black !important;
 }
 
 .input[data-long] {
