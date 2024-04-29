@@ -2,7 +2,7 @@ import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import LocalStorage from "@/common/localstorage.manager";
+import LocalStorage from '@/common/localstorage.manager';
 import { signIn } from '@/apis/signin.api';
 import ActionButton from '@/components/ActionButton';
 import styles from '../styles/Login.module.css';

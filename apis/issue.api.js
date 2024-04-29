@@ -1,5 +1,5 @@
 import { api } from '@/apis/index';
-import LocalStorage from "@/common/localstorage.manager";
+import LocalStorage from '@/common/localstorage.manager';
 
 const accessToken = LocalStorage.shared.getItem('accessToken');
 

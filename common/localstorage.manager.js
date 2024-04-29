@@ -1,53 +1,53 @@
 import crypto from 'crypto';
 
 function signKey(key) {
-    return crypto.createHash('sha256').update(key).digest('hex');
+  return crypto.createHash('sha256').update(key).digest('hex');
 }
 
 class LocalStorage {
-    constructor() {}
+  constructor() {}
 
-    setItem(key, item) {
-        if (typeof window !== 'undefined' && key) {
-            window.localStorage.setItem(signKey(`@secured.${key}`), item);
-        }
+  setItem(key, item) {
+    if (typeof window !== 'undefined' && key) {
+      window.localStorage.setItem(signKey(`@secured.${key}`), item);
     }
+  }
 
-    getItem(key) {
-        if (typeof window !== 'undefined' && key) {
-            try {
-                const signedData = window.localStorage.getItem(
-                    signKey(`@secured.${key}`)
-                );
-                if (signedData) {
-                    return signedData;
-                }
-            } catch (err) {
-                if (err.message === 'invalid signature') {
-                    window.localStorage.removeItem(`@secured.${key}`);
-                }
-
-                console.error(err);
-            }
+  getItem(key) {
+    if (typeof window !== 'undefined' && key) {
+      try {
+        const signedData = window.localStorage.getItem(
+          signKey(`@secured.${key}`)
+        );
+        if (signedData) {
+          return signedData;
+        }
+      } catch (err) {
+        if (err.message === 'invalid signature') {
+          window.localStorage.removeItem(`@secured.${key}`);
         }
 
-        return null;
+        console.error(err);
+      }
     }
 
-    getObject(key) {
-        const data = this.getItem(key);
-        if (data) {
-            return typeof data === 'string' ? JSON.parse(data) : data;
-        }
-    }
+    return null;
+  }
 
-    removeItem(key) {
-        if (typeof window !== 'undefined') {
-            window.localStorage.removeItem(signKey(`@secured.${key}`));
-        }
+  getObject(key) {
+    const data = this.getItem(key);
+    if (data) {
+      return typeof data === 'string' ? JSON.parse(data) : data;
     }
+  }
 
-    static shared = new LocalStorage();
+  removeItem(key) {
+    if (typeof window !== 'undefined') {
+      window.localStorage.removeItem(signKey(`@secured.${key}`));
+    }
+  }
+
+  static shared = new LocalStorage();
 }
 
 export default LocalStorage;
