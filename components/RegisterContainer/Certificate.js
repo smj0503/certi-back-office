@@ -116,20 +116,28 @@ export default function ({
 
       <Flex vertical gap={12} style={{ width: '100%' }}>
         <label className={styles.label}>{t('register.certificate.name')}</label>
-        <textarea placeholder={t('register.certificate.namePlaceholder')} className={styles.input} onChange={onChangeName} />
+        <textarea
+          placeholder={t('register.certificate.namePlaceholder')}
+          className={styles.input}
+          onChange={onChangeName}
+        />
       </Flex>
       <Flex vertical gap={12} style={{ width: '100%' }}>
         <label className={styles.label}>
           {t('register.certificate.website')}
         </label>
-        <textarea placeholder={t('register.certificate.websitePlaceholder')} className={styles.input} onChange={onChangeUrl} />
+        <textarea
+          placeholder={t('register.certificate.websitePlaceholder')}
+          className={styles.input}
+          onChange={onChangeUrl}
+        />
       </Flex>
       <Flex vertical gap={12} style={{ width: '100%' }} data-long={true}>
         <label className={styles.label}>
           {t('register.certificate.description')}
         </label>
         <textarea
-            placeholder={t('register.certificate.descriptionPlaceholder')}
+          placeholder={t('register.certificate.descriptionPlaceholder')}
           className={styles.input}
           onChange={onChangeDescription}
           data-long={true}
