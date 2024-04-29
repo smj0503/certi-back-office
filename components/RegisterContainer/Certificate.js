@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
-import { Flex, Select } from 'antd';
+import { Flex, Select, DatePicker } from 'antd';
 import styles from './RegisterContainer.module.css';
 
 export default function ({
@@ -22,12 +22,12 @@ export default function ({
     setCategory(value);
   };
 
-  const onChangeStartDate = (e) => {
-    setStartDate(e.target.value);
+  const onChangeStartDate = (date, dateString) => {
+    setStartDate(dateString);
   };
 
-  const onChangeEndDate = (e) => {
-    setEndDate(e.target.value);
+  const onChangeEndDate = (date, dateString) => {
+    setEndDate(dateString);
   };
 
   const onChangeName = (e) => {
@@ -98,21 +98,13 @@ export default function ({
           <label className={styles.label}>
             {t('register.certificate.startDate')}
           </label>
-          <input
-            type='text'
-            className={styles.input}
-            onChange={onChangeStartDate}
-          />
+          <DatePicker placeholder='' className={styles.input} onChange={onChangeStartDate} />
         </Flex>
         <Flex vertical gap={12} style={{ width: '100%' }}>
           <label className={styles.label}>
             {t('register.certificate.endDate')}
           </label>
-          <input
-            type='text'
-            className={styles.input}
-            onChange={onChangeEndDate}
-          />
+          <DatePicker placeholder='' className={styles.input} onChange={onChangeEndDate} />
         </Flex>
       </Flex>
 
