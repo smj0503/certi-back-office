@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
-import { Flex, Select } from "antd";
+import { Flex, Select } from 'antd';
 import styles from './IssueContainer.module.css';
 
 export default function ({
@@ -27,15 +27,15 @@ export default function ({
       <Flex vertical gap={12} className={styles.item}>
         <label className={styles.label}>{t('issue.certificate')}</label>
         <Select
-            className={styles.select}
-            placeholder={t('issue.chooseCertificate')}
-            onChange={onChangeCertificate}
-            options={certificateList.map((certificate) => {
-              return {
-                value: certificate.certificateId,
-                label: certificate.certificateName,
-              };
-            })}
+          className={styles.select}
+          placeholder={t('issue.chooseCertificate')}
+          onChange={onChangeCertificate}
+          options={certificateList.map((certificate) => {
+            return {
+              value: certificate.certificateId,
+              label: certificate.certificateName,
+            };
+          })}
         />
       </Flex>
       <Flex vertical gap={12}>
