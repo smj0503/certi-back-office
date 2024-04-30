@@ -1,6 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
 import { useRef, useState } from 'react';
-
+import { Flex } from 'antd';
 import styles from './ImageUploader.module.css';
 import IconPhoto from '../../public/assets/icon-photo.svg';
 
@@ -27,16 +27,16 @@ export default function ({ children, setImage }) {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
+    <Flex vertical gap={12} className={styles.container}>
+      <Flex vertical gap={4}>
         <span className={styles.label}>{children}</span>
         <span
           className={styles.description}
           dangerouslySetInnerHTML={{ __html: t('register.fileTypes') }}
         />
-      </div>
+      </Flex>
 
-      <div className={styles.selector}>
+      <Flex align='center' justify='center' className={styles.selector}>
         <input
           type='file'
           className={styles.file}
@@ -55,7 +55,7 @@ export default function ({ children, setImage }) {
             <IconPhoto />
           </button>
         )}
-      </div>
-    </div>
+      </Flex>
+    </Flex>
   );
 }
