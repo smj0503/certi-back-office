@@ -4,7 +4,7 @@ import { Flex } from 'antd';
 import styles from './ImageUploader.module.css';
 import IconPhoto from '../../public/assets/icon-photo.svg';
 
-export default function ({ children, setImage }) {
+export default function ({ label, setImage, selectable = true }) {
   const { t } = useTranslation('common');
 
   const imageSelector = useRef();
@@ -29,11 +29,13 @@ export default function ({ children, setImage }) {
   return (
     <Flex vertical gap={12} className={styles.container}>
       <Flex vertical gap={4}>
-        <span className={styles.label}>{children}</span>
-        <span
-          className={styles.description}
-          dangerouslySetInnerHTML={{ __html: t('register.fileTypes') }}
-        />
+        <span className={styles.label}>{label}</span>
+        {selectable && (
+          <span
+            className={styles.description}
+            dangerouslySetInnerHTML={{ __html: t('register.fileTypes') }}
+          />
+        )}
       </Flex>
 
       <Flex align='center' justify='center' className={styles.selector}>

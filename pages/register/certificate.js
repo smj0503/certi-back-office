@@ -97,9 +97,10 @@ export default function () {
         </span>
         <div className={styles.formContainer}>
           <div className={styles.inputContainer}>
-            <ImageUploader setImage={setImage}>
-              {t('register.certificate.image')}
-            </ImageUploader>
+            <ImageUploader
+              setImage={setImage}
+              label={t('register.certificate.image')}
+            />
             <CertificateRegisterContainer
               setImage={setImage}
               setCompanyId={setCompanyId}

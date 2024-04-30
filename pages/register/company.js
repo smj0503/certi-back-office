@@ -74,9 +74,10 @@ export default function () {
         </span>
         <div className={styles.formContainer}>
           <div className={styles.inputContainer}>
-            <ImageUploader setImage={setImage}>
-              {t('register.company.image')}
-            </ImageUploader>
+            <ImageUploader
+              setImage={setImage}
+              label={t('register.company.image')}
+            />
             <CompanyRegisterContainer
               setName={setName}
               setDescription={setDescription}
