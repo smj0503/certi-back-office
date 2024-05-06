@@ -89,7 +89,7 @@
     "issue": {
       "success": "증명서 발행 성공",
       "failed": "증명서 발행 실패",
-      "successMessage": "디지털 증명서가 성공적으 발행됐습니다",
+      "successMessage": "디지털 증명서가 성공적으로 발행됐습니다",
       "failMessage": "다시 한 번 시도해보시겠어요?"
     },
     "registerCompany": {

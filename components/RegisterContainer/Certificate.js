@@ -22,12 +22,14 @@ export default function ({
     setCategory(value);
   };
 
-  const onChangeStartDate = (date, dateString) => {
-    setStartDate(dateString);
+  const onChangeStartDate = (date) => {
+    setStartDate(date);
+    console.log('start date : ', date);
   };
 
-  const onChangeEndDate = (date, dateString) => {
-    setEndDate(dateString);
+  const onChangeEndDate = (date) => {
+    setEndDate(date);
+    console.log('end date : ', date);
   };
 
   const onChangeName = (e) => {
