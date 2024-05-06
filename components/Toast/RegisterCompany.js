@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation';
-import { Flex } from "antd";
+import { Flex } from 'antd';
 import styles from './Toast.module.css';
 import IconCheck from '../../public/assets/icon-check.svg';
 import IconWarning from '../../public/assets/icon-warning.svg';

@@ -4,11 +4,12 @@ import { Flex } from 'antd';
 import styles from './ImageUploader.module.css';
 import IconPhoto from '../../public/assets/icon-photo.svg';
 
-export default function ({ label, setImage, selectable = true }) {
+export default function ({ label, setImage, selectable = true, initialImage }) {
   const { t } = useTranslation('common');
 
   const imageSelector = useRef();
   const [photo, setPhoto] = useState('');
+  const [alt, setAlt] = useState('');
 
   const _onChange = (e) => {
     const reader = new FileReader();
@@ -18,8 +19,11 @@ export default function ({ label, setImage, selectable = true }) {
       setPhoto(data);
     };
 
-    setImage(e.target.files[0]);
-    reader.readAsDataURL(e.target.files[0]);
+    if (e.target.files[0]) {
+      setAlt(e.target.files[0].name);
+      setImage(e.target.files[0]);
+      reader.readAsDataURL(e.target.files[0]);
+    }
   };
 
   const _onClick = () => {
@@ -38,25 +42,35 @@ export default function ({ label, setImage, selectable = true }) {
         )}
       </Flex>
 
-      <Flex align='center' justify='center' className={styles.selector}>
+      <Flex
+        align='center'
+        justify='center'
+        className={styles.selector}
+        data-button-animation={selectable}
+      >
         <input
           type='file'
           className={styles.file}
           ref={imageSelector}
           onChange={_onChange}
         />
-        {photo ? (
-          <img src={photo} alt='test' className={styles.img} />
-        ) : (
-          <button
-            type='button'
-            className={styles.uploadButton}
-            onClick={_onClick}
-            data-button-animation={true}
-          >
-            <IconPhoto />
-          </button>
-        )}
+        {selectable
+          ? photo && <img src={photo} alt={alt} className={styles.img} />
+          : initialImage && (
+              <img
+                src={initialImage}
+                alt='certificate image'
+                className={styles.img}
+              />
+            )}
+        <button
+          type='button'
+          className={styles.uploadButton}
+          onClick={_onClick}
+          disabled={!selectable}
+        >
+          {!photo && !initialImage && <IconPhoto />}
+        </button>
       </Flex>
     </Flex>
   );

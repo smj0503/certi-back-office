@@ -6,7 +6,7 @@ import { getChainList, getCertificateList } from '@/apis/dashboard.api';
 import { issueCertificate } from '@/apis/issue.api';
 
 import AppLayout from '@/components/AppLayout';
-import Image from '@/components/IssueContainer/Image';
+import Image from '@/components/ImageUploader';
 import IssueContainer from 'components/IssueContainer/InputContainer';
 import ActionButton from '@/components/ActionButton';
 import Toast from '@/components/Toast/Issue';
@@ -77,7 +77,11 @@ export default function () {
         </span>
         <div className={styles.formContainer}>
           <div className={styles.inputContainer}>
-            <Image image={image} />
+            <Image
+              label={t('issue.profile')}
+              selectable={false}
+              initialImage={image}
+            />
             <IssueContainer
               setCertificateId={setCertificateId}
               setAddress={setAddress}
