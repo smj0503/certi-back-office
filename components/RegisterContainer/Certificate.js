@@ -73,20 +73,20 @@ export default function ({
             onChange={onChangeCategory}
             options={[
               {
-                value: 'Diploma',
-                label: 'Diploma',
+                value: '수료증',
+                label: '수료증',
               },
               {
-                value: 'Contest',
-                label: 'Contest',
+                value: '상장',
+                label: '상장',
               },
               {
-                value: 'License',
-                label: 'License',
+                value: '자격증',
+                label: '자격증',
               },
               {
-                value: 'Others',
-                label: 'Others',
+                value: '기타',
+                label: '기타',
               },
             ]}
           />
