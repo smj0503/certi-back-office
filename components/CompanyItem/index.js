@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import RemoteImage from '@/components/RemoteImage';
 import { Flex } from 'antd';
 import styles from './CompanyItem.module.css';
@@ -10,6 +11,11 @@ export default function ({
   issueNum,
   date,
 }) {
+  const renderDate = (date) => {
+    const tempDate = new Date(date * 1000);
+    return dayjs(tempDate).format('YYYY.MM.DD');
+  };
+
   return (
     <Flex align='center' className={styles.item}>
       <div className={styles.info}>
@@ -26,7 +32,7 @@ export default function ({
         <span>{issueNum}</span>
       </div>
       <div className={styles.data}>
-        <span>{date}</span>
+        <span>{renderDate(date)}</span>
       </div>
     </Flex>
   );

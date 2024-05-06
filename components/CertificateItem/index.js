@@ -1,6 +1,7 @@
 import { Flex } from 'antd';
 import RemoteImage from '@/components/RemoteImage';
 import styles from './CertificateItem.module.css';
+import dayjs from 'dayjs';
 
 export default function ({
   image,
@@ -12,6 +13,11 @@ export default function ({
   startDate,
   endDate,
 }) {
+  const renderDate = (date) => {
+    const tempDate = new Date(date * 1000);
+    return dayjs(tempDate).format('YYYY.MM.DD');
+  };
+
   return (
     <Flex align='center' className={styles.item}>
       <Flex align='center' gap={12}>
@@ -31,10 +37,10 @@ export default function ({
         <span>{issueNum}</span>
       </Flex>
       <Flex align='center' className={styles.date}>
-        <span>{startDate}</span>
+        <span>{renderDate(startDate)}</span>
       </Flex>
       <Flex align='center' className={styles.date}>
-        <span>{endDate}</span>
+        <span>{renderDate(endDate)}</span>
       </Flex>
     </Flex>
   );

@@ -93,7 +93,14 @@ export default function () {
           </ActionButton>
         </div>
       </form>
-      {show && <Toast state={success} close={close} onClick={onClick} type='registerCompany' />}
+      {show && (
+        <Toast
+          state={success}
+          close={close}
+          onClick={onClick}
+          type='registerCompany'
+        />
+      )}
     </AppLayout>
   );
 }

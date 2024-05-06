@@ -68,7 +68,7 @@
     "issue": "발행 수",
     "date": "등록일자",
     "category": "카테고리",
-    "startDate": "등록일자",
+    "startDate": "시작일자",
     "endDate": "만료일자"
   },
   "issue": {

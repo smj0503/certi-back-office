@@ -40,7 +40,7 @@ export default function ({ certificateList }) {
               companyName={certificate.companyName}
               category={certificate.certificateImageCategory}
               issueNum={certificate.issuedCount}
-              startDate={certificate.certificateRegisterDate}
+              startDate={certificate.certificateStartDate}
               endDate={certificate.certificateEndDate}
             />
           );
