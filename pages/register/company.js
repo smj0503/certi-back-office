@@ -1,7 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-
 import { registerCompany } from '@/apis/register.api';
 
 import AppLayout from '@/components/AppLayout';
@@ -94,7 +93,7 @@ export default function () {
           </ActionButton>
         </div>
       </form>
-      <Toast state={success} close={close} onClick={onClick} show={show} />
+      {show && <Toast state={success} close={close} onClick={onClick} />}
     </AppLayout>
   );
 }

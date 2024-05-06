@@ -1,7 +1,6 @@
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
-
 import { getCompanyList } from '@/apis/dashboard.api';
 import { registerCertificate } from '@/apis/register.api';
 
@@ -30,7 +29,7 @@ export default function () {
   const [url, setUrl] = useState('');
   const [description, setDescription] = useState('');
 
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [success, setSuccess] = useState(false);
 
   /* Life Cycle */

@@ -94,7 +94,7 @@ export default function () {
           </ActionButton>
         </div>
       </form>
-      <Toast state={success} close={close} onClick={onClick} show={show} />
+      {show && <Toast state={success} close={close} onClick={onClick} />}
     </AppLayout>
   );
 }
