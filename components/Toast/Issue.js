@@ -1,17 +1,17 @@
 import useTranslation from 'next-translate/useTranslation';
-
+import { Flex } from "antd";
 import styles from './Toast.module.css';
 import IconCheck from '../../public/assets/icon-check.svg';
 import IconWarning from '../../public/assets/icon-warning.svg';
 
-export default function ({ state, onClick, close, show }) {
+export default function ({ state, onClick, close }) {
   const { t } = useTranslation('common');
 
   return (
-    <div className={styles.toast} data-shown={show}>
-      <div className={styles.notion}>
+    <Flex vertical gap={32} className={styles.toast}>
+      <Flex align='center' gap={20}>
         {state ? <IconCheck /> : <IconWarning />}
-        <div className={styles.message}>
+        <Flex vertical gap={8}>
           {state ? (
             <>
               <span className={styles.state}>{t('toast.issue.success')}</span>
@@ -27,21 +27,21 @@ export default function ({ state, onClick, close, show }) {
               </span>
             </>
           )}
-        </div>
-      </div>
+        </Flex>
+      </Flex>
       {state ? (
-        <div className={styles.buttonGroup}>
+        <Flex gap={8} justify='flex-end'>
           <button type='button' className={styles.button} onClick={onClick}>
             <label>{t('toast.ok')}</label>
           </button>
-        </div>
+        </Flex>
       ) : (
-        <div className={styles.buttonGroup}>
+        <Flex gap={8} justify='flex-end'>
           <button type='button' className={styles.button} onClick={close}>
             <label>{t('toast.retry')}</label>
           </button>
-        </div>
+        </Flex>
       )}
-    </div>
+    </Flex>
   );
 }

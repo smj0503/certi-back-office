@@ -30,7 +30,7 @@ export default function () {
   const [url, setUrl] = useState('');
   const [description, setDescription] = useState('');
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [success, setSuccess] = useState(false);
 
   /* Life Cycle */
@@ -133,7 +133,7 @@ export default function () {
           </ActionButton>
         </div>
       </form>
-      <Toast state={success} close={close} onClick={onClick} show={show} />
+      {show && <Toast state={success} close={close} onClick={onClick} />}
     </AppLayout>
   );
 }
