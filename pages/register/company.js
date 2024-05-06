@@ -7,7 +7,7 @@ import AppLayout from '@/components/AppLayout';
 import ImageUploader from '@/components/ImageUploader';
 import CompanyRegisterContainer from '@/components/RegisterContainer/Company';
 import ActionButton from '@/components/ActionButton';
-import Toast from '@/components/Toast/RegisterCompany';
+import Toast from '@/components/Toast';
 
 import styles from '../../styles/Register.module.css';
 
@@ -93,7 +93,7 @@ export default function () {
           </ActionButton>
         </div>
       </form>
-      {show && <Toast state={success} close={close} onClick={onClick} />}
+      {show && <Toast state={success} close={close} onClick={onClick} type='registerCompany' />}
     </AppLayout>
   );
 }

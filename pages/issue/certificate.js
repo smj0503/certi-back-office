@@ -9,7 +9,7 @@ import AppLayout from '@/components/AppLayout';
 import Image from '@/components/ImageUploader';
 import IssueContainer from 'components/IssueContainer/InputContainer';
 import ActionButton from '@/components/ActionButton';
-import Toast from '@/components/Toast/Issue';
+import Toast from '@/components/Toast';
 
 import styles from '../../styles/Register.module.css';
 
@@ -98,7 +98,7 @@ export default function () {
           </ActionButton>
         </div>
       </form>
-      {show && <Toast state={success} close={close} onClick={onClick} />}
+      {show && <Toast state={success} close={close} onClick={onClick} type='issue' />}
     </AppLayout>
   );
 }
